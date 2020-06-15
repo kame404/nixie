@@ -30,7 +30,7 @@ if ('serviceWorker' in navigator) {
       ADD_DIV.setAttribute('class','Nums'+i);
       DIG_OBJ.appendChild(ADD_DIV);
       if( i==2 || i==5 ){ img_src = ''; }
-      else { img_src = 'img/0.png'; }
+      else { img_src = 'img/0.jpg'; }
       ADD_DIV.innerHTML = '<img id="dig'+i+'"class=digits src="'+img_src+'">';
     }
     moveDigital();
@@ -49,12 +49,12 @@ if ('serviceWorker' in navigator) {
     var sec2   = sec % 10;
     var sec1   = (sec - sec2) / 10;
     navigator.vibrate(5);
-    document.getElementById('dig0').src = 'images/'+hour1+'.png';
-    document.getElementById('dig1').src = 'images/'+hour2+'.png';
-    document.getElementById('dig3').src = 'images/'+min1+'.png';
-    document.getElementById('dig4').src = 'images/'+min2+'.png';
-    document.getElementById('dig6').src = 'images/'+sec1+'.png';
-    document.getElementById('dig7').src = 'images/'+sec2+'.png';
+    document.getElementById('dig0').src = 'images/'+hour1+'.jpg';
+    document.getElementById('dig1').src = 'images/'+hour2+'.jpg';
+    document.getElementById('dig3').src = 'images/'+min1+'.jpg';
+    document.getElementById('dig4').src = 'images/'+min2+'.jpg';
+    document.getElementById('dig6').src = 'images/'+sec1+'.jpg';
+    document.getElementById('dig7').src = 'images/'+sec2+'.jpg';
   }
   setInterval( moveDigital,1000 );
   
@@ -65,22 +65,22 @@ if ('serviceWorker' in navigator) {
 <div class="wrapper">
 <div class="grid">
   <div class="grid_child">
-    <img src="images/1.png">
+    <img src="images/1.jpg">
   </div>
   <div class="grid_child">
-    <img src="images/2.png">
+    <img src="images/2.jpg">
   </div>
   <div class="grid_child">
-    <img src="images/3.png">
+    <img src="images/3.jpg">
   </div>
   <div class="grid_child">
-    <img src="images/4.png">
+    <img src="images/4.jpg">
   </div>
   <div class="grid_child">
-    <img src="images/5.png">
+    <img src="images/5.jpg">
   </div>
   <div class="grid_child">
-    <img src="images/6.png">
+    <img src="images/6.jpg">
   </div>
 </div>
 </div>
