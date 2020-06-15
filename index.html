@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<meta charset="utf-8" />
+<meta name="viewport" content="user-scalable=no, viewport-fit=cover">
+<title>Nixie Clock</title>
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+<link rel="apple-touch-icon" sizes="144x144" href="./icon-144.png" />
+<link rel="icon" href="./favicon.ico">
+<link rel="manifest" href="./manifest.json">
+
+<script type="text/javascript">
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').then(function(registration) {
+      // 登録成功
+      console.log('ServiceWorker の登録に成功しました。スコープ: ', registration.scope);
+    }).catch(function(err) {
+      // 登録失敗
+      console.log('ServiceWorker の登録に失敗しました。', err);
+    });
+}
+
+  ( function(){
+  document.addEventListener('DOMContentLoaded',outputClock,false);
+  function outputClock(){
+    var img_src;
+    const DIG_OBJ = document.getElementById('clock');
+    for( var i=0; i<8; i++ ){
+      const ADD_DIV = document.createElement('div');
+      ADD_DIV.setAttribute('class','Nums'+i);
+      DIG_OBJ.appendChild(ADD_DIV);
+      if( i==2 || i==5 ){ img_src = ''; }
+      else { img_src = 'img/0.png'; }
+      ADD_DIV.innerHTML = '<img id="dig'+i+'"class=digits src="'+img_src+'">';
+    }
+    moveDigital();
+  }
+  
+  // Move the numbers.
+  function moveDigital(){
+    var now   = new Date();
+    var hour   = now.getHours();
+    var hour2  = hour % 10;
+    var hour1  = (hour-hour2) / 10 ;
+    var min   = now.getMinutes();
+    var min2  = min % 10;
+    var min1  = (min - min2) / 10; 
+    var sec    = now.getSeconds();
+    var sec2   = sec % 10;
+    var sec1   = (sec - sec2) / 10;
+    navigator.vibrate(5);
+    document.getElementById('dig0').src = 'images/'+hour1+'.png';
+    document.getElementById('dig1').src = 'images/'+hour2+'.png';
+    document.getElementById('dig3').src = 'images/'+min1+'.png';
+    document.getElementById('dig4').src = 'images/'+min2+'.png';
+    document.getElementById('dig6').src = 'images/'+sec1+'.png';
+    document.getElementById('dig7').src = 'images/'+sec2+'.png';
+  }
+  setInterval( moveDigital,1000 );
+  
+  }() );
+  </script>
+
+<!--
+<div class="wrapper">
+<div class="grid">
+  <div class="grid_child">
+    <img src="images/1.png">
+  </div>
+  <div class="grid_child">
+    <img src="images/2.png">
+  </div>
+  <div class="grid_child">
+    <img src="images/3.png">
+  </div>
+  <div class="grid_child">
+    <img src="images/4.png">
+  </div>
+  <div class="grid_child">
+    <img src="images/5.png">
+  </div>
+  <div class="grid_child">
+    <img src="images/6.png">
+  </div>
+</div>
+</div>
+-->
+<div id="clock" class="clock">
+</div>
